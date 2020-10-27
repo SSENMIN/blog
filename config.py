@@ -7,7 +7,6 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
 
     MAIL_SERVER = 'smtp.qq.com'
     MAIL_PORT = 465
