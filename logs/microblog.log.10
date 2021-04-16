@@ -1,0 +1,125 @@
+2020-10-26 16:35:47,150 ERROR: Exception on / [GET] [in C:\Users\lx\venv\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "C:\Users\lx\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1276, in _execute_context
+    self.dialect.do_execute(
+  File "C:\Users\lx\venv\lib\site-packages\sqlalchemy\engine\default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such column: post.language
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\lx\venv\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\lx\venv\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\lx\venv\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\lx\venv\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\lx\venv\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\lx\venv\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\lx\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "D:\mypython\blog\flaskr\routes.py", line 32, in index
+    posts = current_user.followed_posts().paginate(
+  File "C:\Users\lx\venv\lib\site-packages\flask_sqlalchemy\__init__.py", line 496, in paginate
+    items = self.limit(per_page).offset((page - 1) * per_page).all()
+  File "C:\Users\lx\venv\lib\site-packages\sqlalchemy\orm\query.py", line 3373, in all
+    return list(self)
+  File "C:\Users\lx\venv\lib\site-packages\sqlalchemy\orm\query.py", line 3535, in __iter__
+    return self._execute_and_instances(context)
+  File "C:\Users\lx\venv\lib\site-packages\sqlalchemy\orm\query.py", line 3560, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "C:\Users\lx\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1011, in execute
+    return meth(self, multiparams, params)
+  File "C:\Users\lx\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 298, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "C:\Users\lx\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1124, in _execute_clauseelement
+    ret = self._execute_context(
+  File "C:\Users\lx\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1316, in _execute_context
+    self._handle_dbapi_exception(
+  File "C:\Users\lx\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1510, in _handle_dbapi_exception
+    util.raise_(
+  File "C:\Users\lx\venv\lib\site-packages\sqlalchemy\util\compat.py", line 182, in raise_
+    raise exception
+  File "C:\Users\lx\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1276, in _execute_context
+    self.dialect.do_execute(
+  File "C:\Users\lx\venv\lib\site-packages\sqlalchemy\engine\default.py", line 593, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: post.language
+[SQL: SELECT anon_1.post_id AS anon_1_post_id, anon_1.post_body AS anon_1_post_body, anon_1.post_timestamp AS anon_1_post_timestamp, anon_1.post_user_id AS anon_1_post_user_id, anon_1.post_language AS anon_1_post_language 
+FROM (SELECT post.id AS post_id, post.body AS post_body, post.timestamp AS post_timestamp, post.user_id AS post_user_id, post.language AS post_language 
+FROM post JOIN followers ON followers.followed_id = post.user_id 
+WHERE followers.follower_id = ? UNION SELECT post.id AS post_id, post.body AS post_body, post.timestamp AS post_timestamp, post.user_id AS post_user_id, post.language AS post_language 
+FROM post 
+WHERE post.user_id = ?) AS anon_1 ORDER BY anon_1.post_timestamp DESC
+ LIMIT ? OFFSET ?]
+[parameters: (1, 1, 25, 0)]
+(Background on this error at: http://sqlalche.me/e/13/e3q8)
+2020-10-26 16:36:38,939 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 16:38:00,131 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 16:38:31,396 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 16:38:57,850 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 16:39:07,690 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 16:39:11,087 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 16:39:28,925 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 16:40:18,816 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 16:41:14,292 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 16:41:23,733 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 16:42:18,732 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 16:43:17,851 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 16:43:24,290 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 16:43:31,228 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 16:44:59,704 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 16:45:10,810 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 16:45:20,741 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 16:45:51,864 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 16:46:07,406 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 16:46:11,444 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 16:53:41,196 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 16:56:03,379 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 16:56:06,654 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 16:56:28,205 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 16:56:33,102 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 16:56:40,276 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 16:56:43,250 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 16:56:49,220 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 16:58:26,962 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:00:23,852 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:01:40,280 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:01:42,674 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:01:47,770 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:01:54,794 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:02:02,336 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:02:43,569 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:02:48,567 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:05:16,966 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:05:21,351 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:07:25,721 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:07:39,211 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:08:13,345 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:08:18,879 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:08:45,175 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:11:09,207 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:11:14,648 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:12:44,539 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:15:46,329 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:16:01,903 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:16:30,870 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:18:27,799 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:18:32,464 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:18:40,963 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:19:05,043 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:19:10,806 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:19:55,594 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:19:58,767 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:20:09,423 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:20:19,220 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:20:26,138 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:20:30,057 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:20:34,574 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:20:45,523 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]
+2020-10-26 17:20:56,329 INFO: Microblog startup [in D:\mypython\blog\flaskr\__init__.py:49]

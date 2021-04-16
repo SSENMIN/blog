@@ -1,0 +1,25 @@
+//写请求参数
+message WriteRequest {
+  repeated Prometheus.TimeSeries timeseries = 1;
+}
+//读请求参数
+message ReadRequest {
+  repeated Query queries = 1;
+}
+//读返回参数
+message ReadResponse {
+  repeated QueryResult results = 1;
+}
+
+//请求参数
+message Query {
+  int64 start_timestamp_ms = 1;
+  int64 end_timestamp_ms = 2;
+  repeated Prometheus.LabelMatcher matchers = 3;
+  Prometheus.ReadHints hints = 4;
+}
+
+//查询结果
+message QueryResult {
+  repeated Prometheus.TimeSeries timeseries = 1;
+}
